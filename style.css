@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+header{
+    line-height: 15vh;
+    text-align: center;
+    font-size:1.8em;
+    
+    letter-spacing: 8px;
+    color: #ebeff5;
+    background-color:#ee5253;
+}
+section{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ee5253;
+}
+#wrapper{
+    padding: 30px 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 100%;
+    color: #ebeff5;
+    background-color:#ff6b6b;
+    text-align: center;
+}
+
+#wrapper>h1{
+    font-size: 2.5em;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+}
+h2,h3{
+    font-size: 1.2em;
+    letter-spacing: 8px;
+    margin: 15px 0;
+    font-weight: 400;
+}
+button{
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+    margin-top: 10px;
+    padding: 1em 2em;
+    font-weight: 600;
+    border:1px solid #ebeff5;
+    background:#ee5253;
+    color: #ebeff5;
+}
+
+#memory_board{
+    background-color: #ebeff5;
+    border:#999 1px solid;
+    padding: 24px;
+    width: 90%;
+    margin:0px auto;
+    display: flex;
+    justify-content: center;
+    
+}
+#memory_board > div{
+    background-color:#ee5253;
+    border: #000 1px solid;
+    width: 71px;
+    height: 71px;
+    margin:10px;
+    padding: 20px;
+    color: #ee5253;
+    font-size: 40px;
+    cursor: pointer;
+    text-align: center;
+}
+#inputs{
+    opacity: 0;
+    
+}
+
+input{
+    width: 90%;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 25px;
+    outline:none;
+    border:none;
+    background-color: #ebeff5;
+    color:#ee5253;
+    margin:0.2em 0;
+    font-size: 1.1em;
+}
+
+img{
+    width: 300px;
+    height: 300px;
+}
