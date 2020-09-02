@@ -1,5 +1,5 @@
 const $playButton = document.getElementById('play');
 
 $playButton.onclick = () => {
-    location.href = "./game.html";
+    location.href = "game.html";
 }
