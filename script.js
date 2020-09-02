@@ -131,7 +131,7 @@ playBtn.addEventListener('click', () => {
         // this will run when player guess is wrong but still has lives and update the live
         messageSelector.innerHTML = "Wrong Guess,Try Again"
         userInpSelector.value = ''
-        console.log(userLives)
+        userInpSelector.focus()
         livesSelector.textContent = userLives
     }
 })
