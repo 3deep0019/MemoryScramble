@@ -108,7 +108,7 @@ function memoryFlipTile(tile, val) {
 }
 
 let playBtn = document.getElementById('play')
-
+let userLives = 3
 
 //this function will work when the button is pressed
 playBtn.addEventListener('click', () => {
@@ -118,21 +118,21 @@ playBtn.addEventListener('click', () => {
     // userValue take the value of the input that the player has given
     let userValue = (userInpSelector.value).toUpperCase()
     // userLives take the current live of the player
-    let userLives = parseInt(livesSelector.innerHTML)
-    //this checks when player loses all his live then game over
-    if (userLives == 1) {
+    userLives--
+
+    if (userValue == words[ran]) {//this checks when player guess the word correct or not
+        location.href = "./win.html"
+    }
+    else if (userLives == 0) {//this checks if player loses all his live then game over
         location.href = "./lose.html"
     }
     else {
-        if (userValue == words[ran]) { // this will run when player guess it right
-            location.href = "./win.html"
-        } else {// this will run when player guess is wrong but still has lives and update the live
-            messageSelector.innerHTML = "Wrong Guess,Try Again"
-            userInpSelector.value = ''
-            userLives -= 1
-            console.log(userLives)
-            livesSelector.textContent = userLives
-        }
+
+        // this will run when player guess is wrong but still has lives and update the live
+        messageSelector.innerHTML = "Wrong Guess,Try Again"
+        userInpSelector.value = ''
+        console.log(userLives)
+        livesSelector.textContent = userLives
     }
 })
 window.addEventListener('load', newBoard())
