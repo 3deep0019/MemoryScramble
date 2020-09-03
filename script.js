@@ -2,7 +2,33 @@
 let words = ['PYTHON', 'JAVA', 'REACTJS', 'ANGULARJS', 'SQL', 'PHP', 'HTML', 'CSS', 'JAVASCRIPT', 'SWIFT', 'ANDROID', 'MYSQL', 'ORACLE', 'BOOTCAMP']
 //This ran value will generate a random number
 let ran = Math.floor(Math.random() * words.length)
+let time = 0
+let timeLeftS = document.getElementById('timeLeft')
 
+
+function convertSec(e) {
+    let min = Math.floor(e / 60)
+    let sec = e % 60
+    return min + ":" + sec
+}
+let timmer = () => {
+
+    setInterval(function () {
+        console.log(time)
+        if (time <= 0) {
+            location.href = "./lose.html"
+        }
+        else if (tiles == arr.length) {
+            tiles = 0
+            clearInterval(time = 0)
+            time = 60
+
+        }
+        timeLeftS.innerHTML = convertSec(time)
+        time--
+
+    }, 1000)
+}
 // arr is an array which will store the letters for the randonly generated index of word * 2 for memory game
 let arr = []
 // tiles is a variable where we will store the total number of tiles to procced to scramble game
@@ -14,7 +40,17 @@ let memory_values = []
 let memory_tile_ids = []
 // word variable will store the word that we have got by generating the random number
 let word = words[ran]
-
+if (word.length <= 4) {
+    time = 30
+    timmer()
+} else if (word.length <= 7) {
+    time = 50
+    timmer()
+}
+else {
+    time = 70
+    timmer()
+}
 // In this for loop we are storing in the letters in such a manner that the letters sould not be in arranged why
 for (let i = 0; i < word.length; i++) {
     arr.push(word.charAt(i))
@@ -76,7 +112,7 @@ function memoryFlipTile(tile, val) {
                     setTimeout(function () {
                         let selector = document.getElementById("inputs")
                         let findHeaderSelector = document.getElementById("findheading")
-                        findHeaderSelector.style.opacity = 0
+                        findHeaderSelector.style.display = "none"
                         selector.style.opacity = 1
                     }, 800)
 
@@ -124,7 +160,11 @@ playBtn.addEventListener('click', () => {
         location.href = "./win.html"
     }
     else if (userLives == 0) {//this checks if player loses all his live then game over
-        location.href = "./lose.html"
+        messageSelector.innerHTML = "The Guessing word was " + words[ran]
+        messageSelector.style.fontWeight = '800'
+        setTimeout(function () {
+            location.href = "./lose.html"
+        }, 5000)
     }
     else {
 
@@ -135,4 +175,6 @@ playBtn.addEventListener('click', () => {
         livesSelector.textContent = userLives
     }
 })
+
+
 window.addEventListener('load', newBoard())
