@@ -63,7 +63,7 @@ button{
     background-color: #ebeff5;
     border:#999 1px solid;
     padding: 24px;
-    width: 90%;
+    width: 95%;
     margin:0px auto;
     display: flex;
     justify-content: center;
@@ -85,7 +85,6 @@ button{
     opacity: 0;
     
 }
-
 input{
     width: 90%;
     padding: 15px 0;

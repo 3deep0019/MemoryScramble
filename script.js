@@ -23,11 +23,11 @@ let timer = () => {
         if (time <= 0) {
             location.href = "./lose.html"
         }
-        //if the player solves the memory game in the given time then the timer will be reset to 1 min
+        //if the player solves the memory game in the given time then the timer will be reset to 30 sec
         else if (tiles == arr.length) {
             tiles = 0
             clearInterval(time = 0)
-            time = 60
+            time = 30
 
         }
         timeLeftS.innerHTML = convertSec(time)
@@ -49,14 +49,14 @@ let word = words[ran]
 
 //here we check the word length to give a reasonable time to solve the memory game according to the length of the word
 if (word.length <= 4) {
-    time = 30
+    time = 25
     timer()
 } else if (word.length <= 7) {
-    time = 50
+    time = 40
     timer()
 }
 else {
-    time = 70
+    time = 65
     timer()
 }
 // In this for loop we are storing the letter twice in such a manner that the letters sould not be in arranged way
@@ -171,6 +171,8 @@ playBtn.addEventListener('click', () => {
         //guess guessed for 5 sec then try again page will be displayed
         messageSelector.innerHTML = "The Guessing word was " + words[ran]
         messageSelector.style.fontWeight = '800'
+        messageSelector.style.color = "#ee5253"
+        messageSelector.style.backgroundColor = "#ebeff5"
         setTimeout(function () {
             location.href = "./lose.html"
         }, 5000)
