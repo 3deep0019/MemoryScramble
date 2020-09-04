@@ -2,22 +2,28 @@
 let words = ['PYTHON', 'JAVA', 'REACTJS', 'ANGULARJS', 'SQL', 'PHP', 'HTML', 'CSS', 'JAVASCRIPT', 'SWIFT', 'ANDROID', 'MYSQL', 'ORACLE', 'BOOTCAMP']
 //This ran value will generate a random number
 let ran = Math.floor(Math.random() * words.length)
+
+//to initialise the time
 let time = 0
+//select the html where we have to display the countdown
 let timeLeftS = document.getElementById('timeLeft')
-
-
+//this function take argument in seconds and return to min and sec
 function convertSec(e) {
     let min = Math.floor(e / 60)
     let sec = e % 60
     return min + ":" + sec
 }
-let timmer = () => {
 
+//this function will start a countdown from a given time
+let timer = () => {
+
+    //this setinterval function will execute in every 1 sec
     setInterval(function () {
-        console.log(time)
+        //if the time = 0 which means your's times up so it will direct you to try again page
         if (time <= 0) {
             location.href = "./lose.html"
         }
+        //if the player solves the memory game in the given time then the timer will be reset to 1 min
         else if (tiles == arr.length) {
             tiles = 0
             clearInterval(time = 0)
@@ -40,18 +46,20 @@ let memory_values = []
 let memory_tile_ids = []
 // word variable will store the word that we have got by generating the random number
 let word = words[ran]
+
+//here we check the word length to give a reasonable time to solve the memory game according to the length of the word
 if (word.length <= 4) {
     time = 30
-    timmer()
+    timer()
 } else if (word.length <= 7) {
     time = 50
-    timmer()
+    timer()
 }
 else {
     time = 70
-    timmer()
+    timer()
 }
-// In this for loop we are storing in the letters in such a manner that the letters sould not be in arranged why
+// In this for loop we are storing the letter twice in such a manner that the letters sould not be in arranged way
 for (let i = 0; i < word.length; i++) {
     arr.push(word.charAt(i))
     arr.unshift(word.charAt(i))
@@ -159,7 +167,8 @@ playBtn.addEventListener('click', () => {
     if (userValue == words[ran]) {//this checks when player guess the word correct or not
         location.href = "./win.html"
     }
-    else if (userLives == 0) {//this checks if player loses all his live then game over
+    else if (userLives == 0) {//this checks if player loses all his live then display you the exact word that to be 
+        //guess guessed for 5 sec then try again page will be displayed
         messageSelector.innerHTML = "The Guessing word was " + words[ran]
         messageSelector.style.fontWeight = '800'
         setTimeout(function () {
