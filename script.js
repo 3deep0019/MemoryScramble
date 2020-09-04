@@ -2,7 +2,8 @@
 let words = ['PYTHON', 'JAVA', 'REACTJS', 'ANGULARJS', 'SQL', 'PHP', 'HTML', 'CSS', 'JAVASCRIPT', 'SWIFT', 'ANDROID', 'MYSQL', 'ORACLE', 'BOOTCAMP']
 //This ran value will generate a random number
 let ran = Math.floor(Math.random() * words.length)
-
+let userValueForScore
+let timeForScrambleGame
 //to initialise the time
 let time = 0
 //select the html where we have to display the countdown
@@ -27,7 +28,7 @@ let timer = () => {
         else if (tiles == arr.length) {
             tiles = 0
             clearInterval(time = 0)
-            time = 30
+            time = timeForScrambleGame
 
         }
         timeLeftS.innerHTML = convertSec(time)
@@ -46,18 +47,30 @@ let memory_values = []
 let memory_tile_ids = []
 // word variable will store the word that we have got by generating the random number
 let word = words[ran]
+let timeForScore = 0
+let finalTimeForScore
+setInterval(function () {
+    if (userValueForScore == words[ran]) {
+        clearInterval(timeForScore = 0)
+    }
+    timeForScore++
+    finalTimeForScore = timeForScore
+}, 1000)
 
 //here we check the word length to give a reasonable time to solve the memory game according to the length of the word
 if (word.length <= 4) {
-    time = 25
+    time = 8
     timer()
-} else if (word.length <= 7) {
-    time = 40
+    timeForScrambleGame = 7
+} else if (word.length < 6 && word.length > 4) {
+    time = 30
     timer()
+    timeForScrambleGame = 12
 }
 else {
-    time = 65
+    time = 60
     timer()
+    timeForScrambleGame = 30
 }
 // In this for loop we are storing the letter twice in such a manner that the letters sould not be in arranged way
 for (let i = 0; i < word.length; i++) {
@@ -153,6 +166,7 @@ function memoryFlipTile(tile, val) {
 
 let playBtn = document.getElementById('play')
 let userLives = 3
+let score
 
 //this function will work when the button is pressed
 playBtn.addEventListener('click', () => {
@@ -161,11 +175,39 @@ playBtn.addEventListener('click', () => {
     let messageSelector = document.getElementById('message')
     // userValue take the value of the input that the player has given
     let userValue = (userInpSelector.value).toUpperCase()
+    userValueForScore = userValue
     // userLives take the current live of the player
     userLives--
 
     if (userValue == words[ran]) {//this checks when player guess the word correct or not
-        location.href = "./win.html"
+        let winDivSelector = document.getElementById('winDiv')
+        let wrapperSelector = document.getElementById('wrapper')
+        let scoreSpamSelector = document.getElementById('score')
+        time = 300
+        if (timeForScrambleGame == 7) {
+            if (finalTimeForScore < 7.5) {
+                score = 50
+            } else {
+                score = 25
+            }
+        } else if (timeForScrambleGame == 12) {
+            if (finalTimeForScore < 13.5) {
+                score = 50
+            } else {
+                score = 25
+            }
+        }
+        else if (timeForScrambleGame == 30) {
+            if (finalTimeForScore < 25) {
+                score = 50
+            } else {
+                score = 25
+            }
+        }
+        winDivSelector.style.display = 'flex'
+        wrapperSelector.style.display = 'none'
+        scoreSpamSelector.textContent = score
+
     }
     else if (userLives == 0) {//this checks if player loses all his live then display you the exact word that to be 
         //guess guessed for 5 sec then try again page will be displayed
@@ -187,5 +229,9 @@ playBtn.addEventListener('click', () => {
     }
 })
 
+let playAgain = document.getElementById('reset')
+playAgain.addEventListener('click', function () {
+    location.href = 'game.html'
+})
 
 window.addEventListener('load', newBoard())

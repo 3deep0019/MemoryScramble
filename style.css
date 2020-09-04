@@ -11,7 +11,6 @@ header{
     line-height: 15vh;
     text-align: center;
     font-size:1.8em;
-    
     letter-spacing: 8px;
     color: #ebeff5;
     background-color:#ee5253;
@@ -19,24 +18,25 @@ header{
 section{
     height: 85vh;
     display: flex;
+    flex-flow: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     background-color: #ee5253;
 }
-#wrapper{
+#wrapper,#winDiv{
     padding: 30px 20px;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: 85vh;
     width: 100%;
     color: #ebeff5;
     background-color:#ff6b6b;
     text-align: center;
 }
 
-#wrapper>h1{
+#wrapper>h1,#winDiv>h1{
     font-size: 2.5em;
     letter-spacing: 8px;
     margin-bottom: 20px;
@@ -101,4 +101,12 @@ input{
 img{
     width: 300px;
     height: 300px;
+}
+#score_details >img{
+    width: 300px;
+    height: 300px;
+}
+
+#winDiv{
+    display: none;
 }
