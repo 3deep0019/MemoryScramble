@@ -185,22 +185,28 @@ playBtn.addEventListener('click', () => {
         let scoreSpamSelector = document.getElementById('score')
         time = 300
         if (timeForScrambleGame == 7) {
-            if (finalTimeForScore < 7.5) {
+            if (finalTimeForScore <= 7.5) {
                 score = 50
             } else {
                 score = 25
             }
         } else if (timeForScrambleGame == 12) {
-            if (finalTimeForScore < 13.5) {
+            if (finalTimeForScore <= 10.5) {
                 score = 50
-            } else {
+            } else if (finalTimeForScore <= 20) {
+                score = 35
+            }
+            else {
                 score = 25
             }
         }
         else if (timeForScrambleGame == 30) {
             if (finalTimeForScore < 25) {
                 score = 50
-            } else {
+            } else if (finalTimeForScore <= 35) {
+                score = 35
+            }
+            else {
                 score = 25
             }
         }
