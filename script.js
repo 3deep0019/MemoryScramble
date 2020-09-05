@@ -1,5 +1,5 @@
 //Defined an array which will stores the words for the game
-let words = ['PYTHON', 'JAVA', 'REACTJS', 'ANGULARJS', 'SQL', 'PHP', 'HTML', 'CSS', 'JAVASCRIPT', 'SWIFT', 'ANDROID', 'MYSQL', 'ORACLE', 'BOOTCAMP']
+let words = ['PYTHON', 'JAVA', 'REACTJS', 'ANGULARJS', 'SQL', 'PHP', 'HTML', 'CSS', 'RUBY', 'JAVASCRIPT', 'SWIFT', 'ANDROID', 'MYSQL', 'ORACLE', 'BOOTCAMP']
 //This ran value will generate a random number
 let ran = Math.floor(Math.random() * words.length)
 let userValueForScore
@@ -183,6 +183,8 @@ playBtn.addEventListener('click', () => {
         let winDivSelector = document.getElementById('winDiv')
         let wrapperSelector = document.getElementById('wrapper')
         let scoreSpamSelector = document.getElementById('score')
+        let TotalTimeSelector = document.getElementById('totalTime')
+        TotalTimeSelector.innerHTML = convertSec(finalTimeForScore)
         time = 300
         if (timeForScrambleGame == 7) {
             if (finalTimeForScore <= 7.5) {
@@ -191,7 +193,7 @@ playBtn.addEventListener('click', () => {
                 score = 25
             }
         } else if (timeForScrambleGame == 12) {
-            if (finalTimeForScore <= 10.5) {
+            if (finalTimeForScore <= 13.5) {
                 score = 50
             } else if (finalTimeForScore <= 20) {
                 score = 35
