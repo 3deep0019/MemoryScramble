@@ -14,12 +14,28 @@
     </header>
     <section>
         <div id="wrapper">
-            <h1>How to play</h1>
-            <h2>A Game Where you have to first find the letter as a memory game in a given time.By clicking two blocks
+            <h1>Instruction</h1>
+            <!-- <h2>A Game Where you have to first find the letter as a memory game in a given time.By clicking two blocks
                 if it matches you will get a letter</h2>
             <h2>then after finding the letters you have to guess the word in a given time or in given life</h2>
             <img src="./Final_Box.png" alt="Score Sheet">
-            <button id="play">Lets Play</button>
+            <button id="play">Lets Play</button> -->
+            <div id="step1">
+                <h1>How to Find the letters</h1>
+                <video width="600" height="350" [muted]="true" controls loop>
+                    <source src="step_1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button id="step1button">Next</button>
+            </div>
+            <div id="step2">
+                <h1>Guess the word</h1>
+                <video width="600" height="350" [muted]="true" controls loop>
+                    <source src="step_2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button id="play">lets play</button>
+            </div>
         </div>
     </section>
     <script src="index.js"></script>

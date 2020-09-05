@@ -36,7 +36,7 @@ section{
     text-align: center;
 }
 
-#wrapper>h1,#winDiv>h1{
+#wrapper>h1,#winDiv>h1,#step1>h1,#step2>h1{
     font-size: 2.5em;
     letter-spacing: 8px;
     margin-bottom: 20px;
@@ -109,4 +109,17 @@ img{
 
 #winDiv{
     display: none;
+}
+#step1{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+video{
+    outline: none;
+}
+#step2{
+    display: none;
+    flex-flow: column;
+    align-items: center;
 }
